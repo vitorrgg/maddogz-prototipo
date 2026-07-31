@@ -1,1 +1,37 @@
+@import 'custom-css/variables';
 @import '#template/scss/variables';
+
+// $primary / $secondary chegam injetados de content/settings.json
+// (primary_color / secondary_color) pelo storefront-framework.
+
+$white: #fff;
+$black: $md-ink;
+
+$body-bg: $md-bone;
+$body-color: $md-ink;
+
+$border-color: $md-line;
+$text-muted: rgba($md-ink, 0.6);
+$light: $md-line;
+
+// Nada arredondado: a linguagem é de cartaz, tudo em canto vivo.
+$border-radius: 0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+
+$headings-color: $md-ink;
+$headings-font-weight: 700;
+
+$breadcrumb-bg: transparent;
+$breadcrumb-divider: quote("/");
+$breadcrumb-divider-color: $md-line;
+$breadcrumb-active-color: $md-ink;
+
+$card-bg: $md-paper;
+$list-group-bg: $md-paper;
+$list-group-border-color: $md-line;
+
+$input-bg: $md-paper;
+$input-border-color: $md-ink;
+$input-focus-border-color: $md-rust;
+$component-active-bg: $md-ink;

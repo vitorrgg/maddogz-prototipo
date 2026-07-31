@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="48" viewBox="0 0 200 48" role="img" aria-label="Mad Dogz">
+  <!--
+    Wordmark de comp: "MAD DOGZ" composto em tipo condensado pesado.
+    Não é o logotipo oficial da banda — substituir pelo asset do mídia kit.
+  -->
+  <text x="0" y="36" fill="#16130f"
+        font-family="Anton, 'Archivo Black', Impact, 'Haettenschweiler', sans-serif"
+        font-size="40" letter-spacing="-1">MAD DOGZ</text>
+</svg>

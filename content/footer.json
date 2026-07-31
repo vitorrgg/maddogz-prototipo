@@ -1,33 +1,26 @@
 {
   "description": {
-    "title": "",
-    "text": ""
+    "title": "Mad Dogz",
+    "text": "Trio mascarado da Warner Music Brasil. Merch oficial, agenda e canais do grupo."
   },
   "links_1": {
     "list_pages": true,
-    "title": "Páginas",
+    "title": "O grupo",
     "list": []
   },
   "links_2": {
     "list_categories": true,
-    "title": "Categorias",
+    "title": "Loja",
     "list": []
   },
   "contacts": {
-    "title": "Contatos",
-    "phone_wpp": true,
+    "title": "Contato",
+    "phone_wpp": false,
     "socials": true,
     "email": true,
-    "address": true
+    "address": false
   },
-  "stamps": [
-    {
-      "src": "/img/uploads/ssl-safe.png",
-      "alt": "Secure connection",
-      "width": 150,
-      "height": 62
-    }
-  ],
+  "stamps": [],
   "payment_methods": {
     "pix": true,
     "visa": true,
@@ -37,5 +30,5 @@
     "hipercard": true,
     "boleto": true
   },
-  "credits": ""
+  "credits": "Protótipo de teste — não é um site oficial do artista"
 }

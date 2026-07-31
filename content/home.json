@@ -1,47 +1,49 @@
 {
-  "meta_title": "",
-  "meta_description": "",
+  "meta_title": "Mad Dogz — Site Oficial",
+  "meta_description": "Trio mascarado da Warner Music Brasil. Ouça, veja a agenda e compre o merch oficial.",
   "sections": [
     {
-      "type": "banner-slider",
-      "autoplay": 9000,
-      "full_width": false,
-      "slides": [
-        {
-          "img": "/img/uploads/rect89.webp",
-          "link": "/headset",
-          "alt": "Headset banner",
-          "start": "2020-04-11T05:54:06.750Z",
-          "end": "2020-12-31T03:00:00.000Z",
-          "mobile_img": "/img/uploads/headphone.webp"
-        },
-        {
-          "start": "",
-          "end": "",
-          "img": "/img/uploads/banner2.webp",
-          "alt": "Banner sample two",
-          "mobile_img": "/img/uploads/passion.webp"
-        }
-      ]
+      "type": "custom-html",
+      "html": "<section class=\"md-hero\"><div class=\"md-hero__grid\"><h1 class=\"md-hero__name\">Mad<br>Dogz</h1><div class=\"md-hero__photo\"><img src=\"/img/uploads/maddogz-press.png\" alt=\"Mad Dogz\" width=\"270\" height=\"270\"></div></div><div class=\"md-hero__meta\"><span class=\"md-label md-hero__tag\">trio mascarado</span><span class=\"md-label md-hero__tag\">rap · trap</span><span class=\"md-label\">Warner Music Brasil</span></div></section>"
     },
     {
-      "type": "info-bar",
-      "enabled": true
+      "type": "custom-html",
+      "html": "<div class=\"md-ticker\"><div class=\"md-ticker__track\"><span>Mad Dogz ✦ Mad Dogz ✦ Mad Dogz ✦ Mad Dogz ✦&nbsp;</span><span>Mad Dogz ✦ Mad Dogz ✦ Mad Dogz ✦ Mad Dogz ✦&nbsp;</span></div></div>"
+    },
+    {
+      "type": "custom-html",
+      "html": "<section class=\"md-section\"><div class=\"md-section__head\"><h2 class=\"md-section__title\">Ouça</h2><span class=\"md-label\">canais oficiais</span></div><nav class=\"md-links\"><a href=\"https://www.youtube.com/channel/UCwFc6x27-CR382QkBcN66zQ\" target=\"_blank\" rel=\"noopener\"><span>YouTube</span><span class=\"md-links__arrow\">&#8594;</span></a><a href=\"#\"><span>Spotify</span><span class=\"md-links__arrow\">&#8594;</span></a><a href=\"#\"><span>Apple Music</span><span class=\"md-links__arrow\">&#8594;</span></a><a href=\"#\"><span>Instagram</span><span class=\"md-links__arrow\">&#8594;</span></a></nav></section>"
+    },
+    {
+      "type": "collection-shelf",
+      "shuffle": false,
+      "collection_id": null,
+      "sort": "news",
+      "title": "Merch",
+      "link": "/search",
+      "headless": false,
+      "limit": 12,
+      "page": 1
+    },
+    {
+      "type": "custom-html",
+      "html": "<div class=\"md-stripe\"></div><section class=\"md-section\"><div class=\"md-section__head\"><h2 class=\"md-section__title\">Ao vivo</h2><span class=\"md-label\">agenda</span></div><div class=\"md-shows\"><div class=\"md-shows__row\"><span class=\"md-shows__date\">A definir</span><span class=\"md-shows__city\">S&atilde;o Paulo &middot; SP</span><span class=\"md-shows__status\">em breve</span></div><div class=\"md-shows__row\"><span class=\"md-shows__date\">A definir</span><span class=\"md-shows__city\">Rio de Janeiro &middot; RJ</span><span class=\"md-shows__status\">em breve</span></div><div class=\"md-shows__row\"><span class=\"md-shows__date\">A definir</span><span class=\"md-shows__city\">Belo Horizonte &middot; MG</span><span class=\"md-shows__status\">em breve</span></div></div><p class=\"md-label\" style=\"margin-top:1rem;opacity:.55\">datas ilustrativas &mdash; prot&oacute;tipo</p></section>"
     },
     {
       "type": "collection-shelf",
       "shuffle": true,
       "collection_id": null,
-      "sort": "offers",
-      "title": "",
+      "sort": "sales",
+      "title": "Mais vendidos",
+      "link": "/search",
       "headless": false,
       "limit": 12,
       "page": 1
     },
     {
       "type": "page-title",
-      "title": "Loja demo da E-Com Plus",
-      "description": "Loja de demonstração e testes da plataforma E-Com Plus e Storefront. Todos os produtos, preços e informações são meramente ilustrativos."
+      "title": "Protótipo de teste",
+      "description": "Site de demonstração construído sobre o E-Com Plus Storefront. A identidade visual foi derivada da foto de divulgação oficial do trio; logotipo, agenda e parte dos links são comps. Os produtos vêm do catálogo de testes da plataforma e não representam o artista nem a gravadora."
     }
   ]
 }

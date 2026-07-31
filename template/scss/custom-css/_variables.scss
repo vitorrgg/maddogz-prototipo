@@ -1,0 +1,36 @@
+// Mad Dogz — tokens de marca
+//
+// Paleta amostrada da foto oficial do trio (máscaras + estampas):
+// laranja-tigre e ferrugem das máscaras, azul-gelo da máscara central,
+// preto quente das listras e um off-white de papel como fundo.
+
+$md-ink: #16130f; // preto quente — tipografia e blocos
+$md-bone: #f4f1e8; // off-white de papel — fundo
+$md-paper: #ffffff; // superfícies (cards, modais)
+$md-tiger: #f2a93b; // laranja-tigre — destaque
+$md-rust: #c9512a; // ferrugem — ação primária
+$md-ice: #7fa6be; // azul-gelo — apoio
+$md-line: #ddd6c6; // divisores sobre o bone
+
+// Display condensado e pesado, rodando bem justo.
+$md-display-tracking: -0.015em;
+$md-display-leading: 0.84;
+$md-label-tracking: 0.16em;
+
+:root {
+  --md-ink: #{$md-ink};
+  --md-bone: #{$md-bone};
+  --md-paper: #{$md-paper};
+  --md-tiger: #{$md-tiger};
+  --md-rust: #{$md-rust};
+  --md-ice: #{$md-ice};
+  --md-line: #{$md-line};
+
+  --md-display-tracking: #{$md-display-tracking};
+  --md-display-leading: #{$md-display-leading};
+  --md-label-tracking: #{$md-label-tracking};
+
+  // Anton é injetada em content/code.json (settings.font_family só carrega
+  // uma família, que aqui fica com o texto corrido).
+  --md-display-font: 'Anton', 'Archivo Black', Impact, sans-serif;
+}

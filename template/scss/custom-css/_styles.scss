@@ -1,1 +1,720 @@
-// Add your custom CSS here.
+// =========================================================================
+// Mad Dogz — site oficial (protótipo)
+//
+// A identidade do trio é gráfica antes de ser fotográfica: máscaras de
+// bicho, estampas conflitantes e uma paleta fechada. Como as fotos de
+// divulgação disponíveis são thumbnails de 270px, o sistema aqui apoia o
+// peso visual em tipografia condensada pesada, blocos de cor chapada e um
+// padrão de listras desenhado — a foto entra no tamanho nativo, como tile.
+//
+// Tipografia: Anton no display (injetada em content/code.json), Archivo no
+// texto corrido (content/settings.json → font_family).
+// =========================================================================
+
+// -------------------------------------------------------------------------
+// Base
+// -------------------------------------------------------------------------
+
+body {
+  background: var(--md-bone);
+  color: var(--md-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--md-tiger);
+  color: var(--md-ink);
+}
+
+// Blocos que usam .container acompanham o recuo das vitrines.
+.custom-html > .container,
+.page-title.container {
+  max-width: none;
+  padding-left: var(--spacer-2);
+  padding-right: var(--spacer-2);
+
+  @media (min-width: 768px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  @media (min-width: 992px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+// -------------------------------------------------------------------------
+// Utilitários tipográficos
+// -------------------------------------------------------------------------
+
+%md-display-metrics {
+  font-family: var(--md-display-font);
+  font-weight: 400; // Anton só tem um peso; o volume vem do desenho
+  text-transform: uppercase;
+  line-height: var(--md-display-leading);
+  letter-spacing: var(--md-display-tracking);
+  margin: 0;
+}
+
+.md-display {
+  @extend %md-display-metrics;
+  color: var(--md-ink);
+  font-size: clamp(3rem, 13vw, 11rem);
+}
+
+// Variante vazada, para sobrepor a blocos de cor sem virar mancha.
+.md-outline {
+  @extend %md-display-metrics;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--md-ink);
+  font-size: clamp(3rem, 13vw, 11rem);
+}
+
+.md-label {
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: var(--md-label-tracking);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+// Faixa de listras usada como divisor e cinta de seção.
+.md-stripe {
+  background: url('/img/uploads/tiger.svg') repeat-x center / auto 100%;
+  height: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+}
+
+// -------------------------------------------------------------------------
+// Top bar + header
+// -------------------------------------------------------------------------
+
+.top-bar {
+  background: var(--md-ink);
+  border-bottom: none;
+
+  &__nav {
+    font-size: 0.6875rem;
+    letter-spacing: var(--md-label-tracking);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0;
+    color: rgba(255, 255, 255, 0.65);
+
+    a {
+      color: rgba(255, 255, 255, 0.8);
+
+      &:hover {
+        color: var(--md-tiger);
+      }
+    }
+  }
+
+  // O template dá `background: var(--primary)` ao countdown quando é link.
+  &__countdown,
+  a#{&}__countdown {
+    background: var(--md-tiger);
+    color: var(--md-ink);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: var(--md-label-tracking);
+    text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    text-align: center;
+    display: block;
+
+    &:hover {
+      color: var(--md-ink);
+      background: var(--md-rust);
+    }
+  }
+}
+
+.header {
+  background: var(--md-bone);
+  border-bottom: 3px solid var(--md-ink);
+  box-shadow: none;
+
+  &__logo {
+    max-height: 40px;
+    width: auto;
+  }
+
+  &__nav {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background: transparent;
+
+    a {
+      color: var(--md-ink);
+
+      &:hover {
+        background: var(--md-tiger);
+        color: var(--md-ink);
+      }
+    }
+  }
+}
+
+#search-input,
+.search__input {
+  background: var(--md-paper);
+  border: 2px solid var(--md-ink);
+  border-radius: 0;
+  color: var(--md-ink);
+  padding-left: 0.9rem;
+
+  &::placeholder {
+    color: rgba(22, 19, 15, 0.45);
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: var(--md-label-tracking);
+  }
+
+  &:focus {
+    border-color: var(--md-rust);
+    box-shadow: none;
+  }
+}
+
+.menu {
+  &__nav,
+  &__link {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  a {
+    color: var(--md-ink);
+
+    &:hover {
+      color: var(--md-rust);
+    }
+  }
+}
+
+.info-bar {
+  background: var(--md-ink);
+  color: var(--md-bone);
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: var(--md-label-tracking);
+  border: none;
+
+  i,
+  svg {
+    color: var(--md-tiger);
+  }
+}
+
+// -------------------------------------------------------------------------
+// Hero
+// -------------------------------------------------------------------------
+
+.md-hero {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 3rem) 0 0;
+
+  &__grid {
+    display: grid;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    align-items: end;
+
+    @media (min-width: 768px) {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+  }
+
+  &__name {
+    @extend %md-display-metrics;
+    color: var(--md-ink);
+    font-size: clamp(3.5rem, 15vw, 13rem);
+  }
+
+  // A foto oficial tem 270px de lado — usada no tamanho nativo, emoldurada,
+  // ela lê como pôster; esticada viraria borrão.
+  &__photo {
+    width: 270px;
+    max-width: calc(100% - 10px);
+    aspect-ratio: 1 / 1;
+    border: 3px solid var(--md-ink);
+    background: var(--md-paper);
+    overflow: hidden;
+    box-shadow: 10px 10px 0 var(--md-tiger);
+    // Reserva o deslocamento da sombra: colada na borda do container ela
+    // ficaria cortada do lado direito.
+    margin: 0 10px 10px 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: center;
+    margin-top: clamp(1rem, 2.5vw, 1.75rem);
+    padding-top: 1rem;
+    border-top: 3px solid var(--md-ink);
+  }
+
+  &__tag {
+    background: var(--md-ink);
+    color: var(--md-bone);
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+// -------------------------------------------------------------------------
+// Ticker
+// -------------------------------------------------------------------------
+
+.md-ticker {
+  background: var(--md-ink);
+  color: var(--md-tiger);
+  overflow: hidden;
+  padding: 0.6rem 0;
+
+  // Sangra para fora do .container que o custom-html impõe.
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+
+  &__track {
+    display: flex;
+    width: max-content;
+    animation: md-scroll 28s linear infinite;
+  }
+
+  // Sem padding entre os grupos: os dois <span> são idênticos e o
+  // translateX(-50%) só emenda sem costura se o espaçamento for o mesmo
+  // dentro e entre eles (o separador já vem no próprio texto).
+  span {
+    @extend %md-display-metrics;
+    font-size: clamp(1.25rem, 3vw, 2.25rem);
+    white-space: nowrap;
+  }
+}
+
+@keyframes md-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-ticker__track {
+    animation: none;
+  }
+}
+
+// -------------------------------------------------------------------------
+// Blocos de seção
+// -------------------------------------------------------------------------
+
+.md-section {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: clamp(1rem, 2.5vw, 2rem);
+  }
+
+  &__title {
+    @extend %md-display-metrics;
+    font-size: clamp(2rem, 7vw, 5rem);
+    color: var(--md-ink);
+  }
+}
+
+// Lista de plataformas / links externos: linhas grandes, seta à direita.
+.md-links {
+  border-top: 3px solid var(--md-ink);
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: clamp(0.75rem, 2vw, 1.25rem) 0.5rem;
+    border-bottom: 1px solid var(--md-line);
+    color: var(--md-ink);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background 0.15s ease, padding 0.15s ease;
+
+    &:hover {
+      background: var(--md-tiger);
+      padding-left: 1.25rem;
+    }
+  }
+
+  &__arrow {
+    font-family: var(--md-display-font);
+  }
+}
+
+// Agenda: linhas com data à esquerda e cidade à direita.
+.md-shows {
+  border-top: 3px solid var(--md-ink);
+
+  &__row {
+    display: grid;
+    gap: 0.25rem 1.5rem;
+    padding: clamp(0.75rem, 2vw, 1.25rem) 0.5rem;
+    border-bottom: 1px solid var(--md-line);
+    align-items: center;
+
+    @media (min-width: 640px) {
+      grid-template-columns: 9rem minmax(0, 1fr) auto;
+    }
+  }
+
+  &__date {
+    @extend %md-display-metrics;
+    font-size: 1.25rem;
+    color: var(--md-rust);
+  }
+
+  &__city {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  &__status {
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: var(--md-label-tracking);
+    color: rgba(22, 19, 15, 0.55);
+  }
+}
+
+// -------------------------------------------------------------------------
+// Vitrines de produto
+// -------------------------------------------------------------------------
+
+.products-carousel {
+  max-width: none;
+
+  &__title {
+    display: flex;
+    align-items: baseline;
+    text-align: left;
+    padding: 0 0 clamp(1rem, 2.5vw, 1.75rem);
+
+    &::before {
+      display: none;
+    }
+
+    a,
+    span {
+      @extend %md-display-metrics;
+      min-width: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--md-ink);
+      font-size: clamp(2rem, 7vw, 5rem);
+    }
+
+    a:hover {
+      color: var(--md-rust);
+    }
+  }
+
+  .products-carousel__item {
+    padding: 3px;
+  }
+
+  .glide__arrow {
+    border: 3px solid var(--md-ink);
+    border-radius: 0;
+    color: var(--md-ink);
+    background: var(--md-bone);
+
+    &:hover {
+      background: var(--md-tiger);
+      color: var(--md-ink);
+    }
+  }
+}
+
+// -------------------------------------------------------------------------
+// Card de produto
+// -------------------------------------------------------------------------
+
+.product-card {
+  padding: 0;
+  background: var(--md-paper);
+  border: 3px solid var(--md-ink);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+
+  &__pictures {
+    height: auto;
+    aspect-ratio: 1 / 1;
+    background: var(--md-paper);
+    border-bottom: 3px solid var(--md-ink);
+
+    @media (min-width: 576px) {
+      height: auto;
+    }
+    @media (min-width: 992px) {
+      height: auto;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: cover;
+
+      @media (min-width: 576px) {
+        max-height: none;
+      }
+      @media (min-width: 992px) {
+        max-height: none;
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 8px 8px 0 var(--md-tiger);
+    }
+  }
+
+  &__name {
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    color: var(--md-ink);
+    padding: 0.75rem 0.75rem 0;
+  }
+
+  &__prices {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  &__offer-stamp {
+    background: var(--md-rust);
+    color: #fff;
+    border-radius: 0;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 1;
+    right: 0;
+  }
+}
+
+.price,
+.product-card__price,
+.sale-price {
+  font-family: var(--md-display-font);
+  color: var(--md-ink);
+  letter-spacing: 0;
+}
+
+.price--old,
+.base-price,
+del {
+  color: rgba(22, 19, 15, 0.5);
+  font-weight: 400;
+}
+
+// -------------------------------------------------------------------------
+// Botões
+// -------------------------------------------------------------------------
+
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1.6rem;
+  border-width: 3px;
+}
+
+.btn-primary {
+  background: var(--md-rust);
+  border-color: var(--md-ink);
+  color: #fff;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: var(--md-ink);
+    border-color: var(--md-ink);
+    color: var(--md-tiger);
+  }
+}
+
+.btn-secondary,
+.btn-dark {
+  background: var(--md-ink);
+  border-color: var(--md-ink);
+  color: var(--md-tiger);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: var(--md-tiger);
+    border-color: var(--md-ink);
+    color: var(--md-ink);
+  }
+}
+
+.btn-outline-primary {
+  border-color: var(--md-ink);
+  color: var(--md-ink);
+
+  &:hover {
+    background: var(--md-ink);
+    border-color: var(--md-ink);
+    color: var(--md-tiger);
+  }
+}
+
+.glide__arrow.btn {
+  padding: 0;
+}
+
+// -------------------------------------------------------------------------
+// Título de página / breadcrumbs
+// -------------------------------------------------------------------------
+
+.page-title {
+  &__head {
+    color: var(--md-ink);
+
+    h1 {
+      @extend %md-display-metrics;
+      font-size: clamp(2rem, 7vw, 5rem);
+      color: var(--md-ink);
+    }
+  }
+
+  &__short-description {
+    max-width: 44rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgba(22, 19, 15, 0.7);
+  }
+}
+
+.breadcrumb {
+  text-transform: uppercase;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: var(--md-label-tracking);
+
+  a {
+    color: rgba(22, 19, 15, 0.55);
+
+    &:hover {
+      color: var(--md-rust);
+    }
+  }
+}
+
+.html-clearfix {
+  background: transparent;
+}
+
+// -------------------------------------------------------------------------
+// Rodapé
+// -------------------------------------------------------------------------
+
+.footer {
+  background: var(--md-ink);
+  color: rgba(244, 241, 232, 0.75);
+  border-top: none;
+  padding-top: clamp(2rem, 5vw, 4rem);
+
+  &__title {
+    color: var(--md-tiger);
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: var(--md-label-tracking);
+  }
+
+  a {
+    color: rgba(244, 241, 232, 0.75);
+    font-size: 0.8125rem;
+
+    &:hover {
+      color: var(--md-tiger);
+    }
+  }
+
+  &__payment-methods i {
+    filter: grayscale(100%) invert(1);
+    opacity: 0.7;
+  }
+
+  // O template pinta cada rede com a cor da marca via style inline —
+  // sobre o rodapé preto isso vira pontinho colorido solto.
+  .footer__contacts a[aria-label],
+  a[aria-label] i {
+    color: var(--md-tiger) !important;
+  }
+}
+
+.app__credits,
+.footer__credits {
+  text-transform: uppercase;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: var(--md-label-tracking);
+  color: rgba(244, 241, 232, 0.5);
+}
+
+// -------------------------------------------------------------------------
+// Neutralização de cores utilitárias fora da paleta
+// -------------------------------------------------------------------------
+
+.text-success {
+  color: var(--md-rust) !important;
+  font-weight: 700;
+}
+
+.alert-info,
+.alert-success {
+  background: var(--md-paper);
+  border: 3px solid var(--md-ink);
+  color: var(--md-ink);
+  border-radius: 0;
+
+  i,
+  svg {
+    color: var(--md-rust);
+  }
+}
